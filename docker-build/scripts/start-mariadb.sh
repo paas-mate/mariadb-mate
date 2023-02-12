@@ -8,13 +8,16 @@ rm -rf /etc/mysql/conf.d
 rm -rf /etc/mysql/mysql.conf.d
 CONF_FILE=/etc/mysql/my.cnf
 echo "[mysqld]" >$CONF_FILE
-echo "pid-file = /opt/mysql/mysqld.pid" >>$CONF_FILE
+echo "pid-file = /opt/mariadb/mariadb.pid" >>$CONF_FILE
+echo "socket = /opt/mariadb/mariadb.sock" >>$CONF_FILE
 echo "bind-address = 0.0.0.0" >>$CONF_FILE
 echo "character-set-server  = utf8mb4" >>$CONF_FILE
 echo "collation-server      = utf8mb4_general_ci" >>$CONF_FILE
 echo "log_error = $MARIADB_HOME/logs/mariadb_error.log" >>$CONF_FILE
 echo "max_binlog_size   = 100M" >>$CONF_FILE
 echo "ssl = 0" >>$CONF_FILE
+echo "[client]" >>$CONF_FILE
+echo "socket = /opt/mariadb/mariadb.sock" >>$CONF_FILE
 echo "[mysqldump]" >>$CONF_FILE
 echo "quick" >>$CONF_FILE
 echo "quote-names" >>$CONF_FILE
